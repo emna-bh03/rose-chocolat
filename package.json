@@ -1,0 +1,12 @@
+{
+  "name": "rose-chocolat",
+  "version": "2.3.0",
+  "description": "Application de gestion de l'atelier Rose Chocolat",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["pastry", "atelier", "management"],
+  "author": "Rose Chocolat",
+  "license": "MIT"
+}
