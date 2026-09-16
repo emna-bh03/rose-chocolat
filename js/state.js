@@ -159,7 +159,7 @@ class Store {
   logout() {
     this.isAuthenticated = false;
     localStorage.removeItem(STORAGE_KEYS.AUTH);
-    this.notify();
+    window.location.reload();
   }
 
   subscribe(listener) {
