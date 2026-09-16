@@ -1,0 +1,92 @@
+/* ==========================================================================
+   Rose Chocolat Design System Tokens
+   Palette: Noir, Blanc, Beige & Rose Poudré
+   (Vert & Rouge uniquement pour les états/KPIs)
+   ========================================================================== */
+
+:root {
+  /* Core Brand Colors */
+  --color-black: #1A1A1A;
+  --color-black-soft: #262626;
+  --color-black-deep: #111111;
+
+  --color-white: #FFFFFF;
+  --color-white-off: #FAFAFA;
+
+  --color-beige-bg: #F7F3EE;
+  --color-beige-card: #FFFFFF;
+  --color-beige-hover: #F0EAE1;
+  --color-beige-border: #E6DDD3;
+  --color-beige-dark: #D8CCC0;
+
+  --color-rose-poudre: #E8B4B8;
+  --color-rose-soft: #F6E2E3;
+  --color-rose-accent: #C88285;
+  --color-rose-dark: #9E5E62;
+
+  /* State Colors (Strictly reserved for indicators & alerts) */
+  --color-success: #2A9D8F;
+  --color-success-bg: #EAF6F4;
+  --color-danger: #D90429;
+  --color-danger-bg: #FDF0F2;
+  --color-warning: #D4A373;
+  --color-warning-bg: #FAFAF0;
+  --color-info: #577590;
+  --color-info-bg: #F0F4F8;
+
+  /* Text Colors */
+  --text-primary: #1A1A1A;
+  --text-secondary: #595552;
+  --text-muted: #8C8580;
+  --text-light: #FFFFFF;
+
+  --border-color: #E6DDD3;
+  --border-focus: #E8B4B8;
+  --border-subtle: #F2EBE4;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(26, 26, 26, 0.04);
+  --shadow-md: 0 6px 18px rgba(26, 26, 26, 0.07);
+  --shadow-lg: 0 12px 30px rgba(26, 26, 26, 0.12);
+  --shadow-glow: 0 0 20px rgba(232, 180, 184, 0.3);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dark Mode Override (Luxury Dark Noir/Beige/Rose Poudré) */
+[data-theme="dark"] {
+  --color-beige-bg: #141414;
+  --color-beige-card: #1E1E1E;
+  --color-beige-hover: #2A2A2A;
+  --color-beige-border: #333333;
+
+  --text-primary: #FAFAFA;
+  --text-secondary: #C4BEB8;
+  --text-muted: #8C8580;
+
+  --border-color: #333333;
+  --border-focus: #E8B4B8;
+  --border-subtle: #242424;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.6);
+
+  --color-success-bg: #112824;
+  --color-danger-bg: #331217;
+  --color-warning-bg: #2B2316;
+  --color-info-bg: #14222D;
+}
