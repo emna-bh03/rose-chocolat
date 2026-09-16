@@ -121,24 +121,31 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // Static File Serving
+// Static File Serving with detailed logging
+  console.log('🔹 Request URL:', reqUrl);
   let filePath = path.join(PUBLIC_DIR, reqUrl === '/' ? 'index.html' : reqUrl);
+  console.log('🔹 Resolved filePath:', filePath);
   const ext = path.extname(filePath).toLowerCase();
 
   fs.stat(filePath, (err, stats) => {
     if (err || !stats.isFile()) {
+      console.warn('⚠️ File not found or not a file:', filePath);
       if (ext && ext !== '.html') {
         res.writeHead(404, { 'Content-Type': 'text/plain; charset=UTF-8' });
         return res.end('404 Not Found: ' + reqUrl);
       }
+      // Fallback to index.html for SPA routes
       filePath = path.join(PUBLIC_DIR, 'index.html');
+      console.log('🔄 Fallback to index.html:', filePath);
     }
 
     const fileExt = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[fileExt] || 'application/octet-stream';
+    console.log('📄 Serving', filePath, 'as', contentType);
 
     fs.readFile(filePath, (error, content) => {
       if (error) {
+        console.error('❌ Error reading file:', filePath, error);
         res.writeHead(500, { 'Content-Type': 'text/plain; charset=UTF-8' });
         res.end('Erreur serveur : ' + error.code);
       } else {

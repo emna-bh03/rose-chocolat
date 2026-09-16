@@ -320,6 +320,15 @@ class Store {
     this.expenses = [];
     this.syncToServer();
   }
+
+  /* --- UTILITY --- */
+  getLowStockCount() {
+    return this.mp.filter(item => {
+      const qty = parseFloat(item.stockQty) || 0;
+      const min = parseFloat(item.minStock) || 0;
+      return qty <= min;
+    }).length;
+  }
 }
 
 export const store = new Store();

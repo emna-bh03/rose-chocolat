@@ -1,0 +1,88 @@
+{
+  "mp": [
+    {
+      "name": "c",
+      "unit": "kg",
+      "purchasePrice": 0,
+      "stockQty": 1.85,
+      "minThreshold": 0,
+      "id": "mp_1789574465442",
+      "lastUpdated": "2026-09-16"
+    },
+    {
+      "name": "b",
+      "unit": "kg",
+      "purchasePrice": 0,
+      "stockQty": 1.85,
+      "minThreshold": 0,
+      "id": "mp_1789574460967",
+      "lastUpdated": "2026-09-16"
+    },
+    {
+      "name": "a",
+      "unit": "kg",
+      "purchasePrice": 10,
+      "stockQty": 2.85,
+      "minThreshold": 2,
+      "id": "mp_1789574455217",
+      "lastUpdated": "2026-09-16"
+    }
+  ],
+  "recipes": [
+    {
+      "name": "d",
+      "prepTimeMinutes": 45,
+      "yieldQty": 1,
+      "yieldUnit": "pc",
+      "sellingPrice": 50,
+      "ingredients": [
+        {
+          "mpId": "mp_1789574465442",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "mpId": "mp_1789574460967",
+          "qty": 100,
+          "unit": "g"
+        },
+        {
+          "mpId": "mp_1789574455217",
+          "qty": 100,
+          "unit": "g"
+        }
+      ],
+      "instructions": "",
+      "id": "rec_1789574488252"
+    }
+  ],
+  "orders": [
+    {
+      "customerName": "s",
+      "customerPhone": "00000000",
+      "deliveryDate": "2026-09-17T16:01",
+      "status": "Cancelled",
+      "items": [
+        {
+          "recipeId": "rec_1789574488252",
+          "recipeName": "d",
+          "qty": 1.5,
+          "unitPrice": 50
+        }
+      ],
+      "totalAmount": 75,
+      "depositPaid": 0,
+      "notes": "",
+      "id": "ord_308",
+      "stockDeducted": true
+    }
+  ],
+  "expenses": [],
+  "settings": {
+    "currency": "TND",
+    "atelierName": "Rose Chocolat Atelier",
+    "vatRate": 7,
+    "lowStockAlertsEnabled": true,
+    "pinCode": "2027"
+  }
+}
