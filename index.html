@@ -33,13 +33,13 @@
   <div id="appRoot"></div>
 
   <!-- Main JavaScript App -->
-  <script type="module" src="./js/app.js?v=2.5"></script>
+  <script type="module" src="./js/app.js?v=2.6"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js?v=2.5').then((reg) => {
+        navigator.serviceWorker.register('/sw.js?v=2.6').then((reg) => {
           reg.update();
           console.log('Rose Chocolat SW registered:', reg.scope);
         }).catch((err) => {

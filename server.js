@@ -123,12 +123,19 @@ const server = http.createServer((req, res) => {
 
   // Static File Serving
   let filePath = path.join(PUBLIC_DIR, reqUrl === '/' ? 'index.html' : reqUrl);
+  const ext = path.extname(filePath).toLowerCase();
+
   fs.stat(filePath, (err, stats) => {
     if (err || !stats.isFile()) {
+      if (ext && ext !== '.html') {
+        res.writeHead(404, { 'Content-Type': 'text/plain; charset=UTF-8' });
+        return res.end('404 Not Found: ' + reqUrl);
+      }
       filePath = path.join(PUBLIC_DIR, 'index.html');
     }
-    const ext = path.extname(filePath).toLowerCase();
-    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+
+    const fileExt = path.extname(filePath).toLowerCase();
+    const contentType = MIME_TYPES[fileExt] || 'application/octet-stream';
 
     fs.readFile(filePath, (error, content) => {
       if (error) {
@@ -151,5 +158,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`🌸 Serveur Rose Chocolat actif sur http://localhost:${PORT}`);
+  console.log(`🌸 Serveur Rose Chocolat actif sur port ${PORT}`);
 });
