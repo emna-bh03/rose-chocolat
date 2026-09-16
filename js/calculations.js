@@ -296,13 +296,18 @@ export function calculateOrderCostMPSnapshot(order, recipes, mpList) {
   return Math.round(totalCost * 100) / 100;
 }
 
-export function calculateFinancialsSummary(orders, recipes, mpList, expenses) {
+export function calculateFinancialsSummary(orders = [], recipes = [], mpList = [], expenses = []) {
   let totalRevenue = 0;
   let totalCostMP = 0;
   let totalDepositPaid = 0;
   let remainingToCollect = 0;
 
-  orders.forEach(ord => {
+  const safeOrders = Array.isArray(orders) ? orders : [];
+  const safeRecipes = Array.isArray(recipes) ? recipes : [];
+  const safeMpList = Array.isArray(mpList) ? mpList : [];
+  const safeExpenses = Array.isArray(expenses) ? expenses : [];
+
+  safeOrders.forEach(ord => {
     if (ord.status !== 'Cancelled' && ord.status !== 'Annulée') {
       const orderTotal = parseFloat(ord.totalAmount) || 0;
       const deposit = parseFloat(ord.depositPaid) || 0;

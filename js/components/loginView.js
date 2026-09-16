@@ -27,13 +27,13 @@ export function renderLoginView() {
             </label>
             
             <input 
-              type="password" 
+              type="text" 
               inputmode="numeric" 
               pattern="[0-9]*" 
               maxLength="8" 
               id="pinInput" 
               class="form-control" 
-              placeholder="••••" 
+              placeholder="2026" 
               style="font-size: 1.8rem; text-align: center; letter-spacing: 0.5rem; padding: 0.75rem; border-radius: 12px; font-weight: 700;" 
               autoFocus 
               required
@@ -44,7 +44,7 @@ export function renderLoginView() {
             Code PIN incorrect
           </div>
 
-          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-weight: 700; font-size: 1rem; border-radius: 12px;">
+          <button type="submit" id="submitPinBtn" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-weight: 700; font-size: 1rem; border-radius: 12px;">
             Accéder à l'Atelier
           </button>
         </form>
@@ -62,19 +62,30 @@ export function attachLoginEvents() {
   const form = document.getElementById('loginPinForm');
   if (!form) return;
 
-  form.onsubmit = async (e) => {
-    e.preventDefault();
-    const pin = document.getElementById('pinInput').value.trim();
+  const handleSubmit = async (e) => {
+    if (e) e.preventDefault();
+    const pinInp = document.getElementById('pinInput');
+    if (!pinInp) return;
+
+    const pin = pinInp.value.trim();
     const errorEl = document.getElementById('loginErrorMsg');
 
+    if (!pin) return;
+
     const result = await store.login(pin);
-    if (!result.success) {
+    if (result.success) {
+      store.notify();
+    } else {
       if (errorEl) {
         errorEl.style.display = 'block';
-        errorEl.innerText = result.error || 'Code PIN incorrect';
+        errorEl.innerText = result.error || 'Code PIN incorrect (essayez 2026)';
       }
-      document.getElementById('pinInput').value = '';
-      document.getElementById('pinInput').focus();
+      pinInp.value = '';
+      pinInp.focus();
     }
   };
+
+  form.onsubmit = handleSubmit;
+  const submitBtn = document.getElementById('submitPinBtn');
+  if (submitBtn) submitBtn.onclick = handleSubmit;
 }
