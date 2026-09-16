@@ -18,8 +18,10 @@ function renderApp() {
 
   // Check Authentication State
   if (!store.isAuthenticated) {
-    root.innerHTML = renderLoginView();
-    attachLoginEvents();
+    if (!document.getElementById('loginPinForm')) {
+      root.innerHTML = renderLoginView();
+      attachLoginEvents();
+    }
     return;
   }
 
